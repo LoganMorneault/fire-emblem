@@ -21,7 +21,7 @@ import Characters.Weapons.IWeapon;
  * 
  */
 public class AHero implements IHero {
-    String name;
+    final String name;
 
     private int currentHP;
     private int maxHP;
