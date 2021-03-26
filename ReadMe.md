@@ -1,4 +1,3 @@
-
 Note to anyone reading! I just started this and likely won't have a lot of time to work on it, but it's here if you want to take a peek at how I design Java classes and methods. This is currently based pretty heavily on Fire Emblem (more specifically Fire Emblem: Heroes), which is an excellent video game franchise. In the future, I'd like to split off somehow, but my initial goal is just to make a working FE battle simulator.
 
 To Do: 
