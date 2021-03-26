@@ -10,7 +10,10 @@ import Characters.IHero;
 public class TestCharUtil {
 
     /**
-     * Basic tests for CharUtil.ManhattanDistance(int, int, int, int) and CharUtil.ManhattanDistance(IHero, IHero)
+     * Basic tests for CharUtil.ManhattanDistance(int, int, int, int) 
+     * and CharUtil.ManhattanDistance(IHero, IHero).
+     * 
+     * These tests are called by TestMain.main
      */
     public static void testManhattanDistance() {
         assert(CharUtil.manhattanDist(1, 1, 1, 1) == 0);
