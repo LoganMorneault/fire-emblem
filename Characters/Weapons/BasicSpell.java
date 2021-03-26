@@ -1,17 +1,14 @@
-package Characters;
+package Characters.Weapons;
 
-/**
- * Class representing a basic sword
- */
-public class BasicSword implements IWeapon {
-    private final int power;
-    private final int range;
-    private final DamageType damageType;
+import Characters.DamageType;
 
-    BasicSword(int power) {
-        this.power = Math.max(1, power);
-        this.range = 1;
-        this.damageType = DamageType.Physical;
+public class BasicSpell extends AWeapon {
+
+    /**
+    * Constructor for a BasicSpell.
+    */
+    BasicSpell(int power) {
+        super(power, 2, DamageType.Magical);
     }
 
     /**
@@ -40,5 +37,6 @@ public class BasicSword implements IWeapon {
     public int getRange() {
         return this.range;
     }
+    
     
 }

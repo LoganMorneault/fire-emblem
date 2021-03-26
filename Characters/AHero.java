@@ -3,6 +3,8 @@ package Characters;
 import java.lang.Math;
 import java.util.Objects;
 
+import Characters.Weapons.IWeapon;
+
 
 /* 
     Represents a character in the game
