@@ -20,7 +20,7 @@ import Characters.Weapons.IWeapon;
  * Represents a Hero in this game.
  * 
  */
-public abstract class AHero implements IHero {
+public class AHero implements IHero {
     String name;
 
     private int currentHP;
@@ -38,7 +38,7 @@ public abstract class AHero implements IHero {
 
     private IWeapon weapon;
 
-    AHero(String name, int maxHP, int strength, int defense, int resistance, int speed, int moveSpeed, int x, int y) {
+    public AHero(String name, int maxHP, int strength, int defense, int resistance, int speed, int moveSpeed, int x, int y) {
         this.name = name;
         this.maxHP = Math.max(0, maxHP);
         this.currentHP = this.maxHP;
@@ -164,5 +164,18 @@ public abstract class AHero implements IHero {
 
         // reduces opponent's health by actualDMG
         other.takeDamage(actualDMG);
+    }
+
+
+    /**
+     *  Reduces this Hero's current health by the given amount.
+     * @param dmg the amount to reduce current health by
+     */
+    public void takeDamage(int dmg) {
+        if (dmg < 0) {
+            throw new IllegalArgumentException("Cannot take negative damage!");
+        }
+
+        this.currentHP -= dmg;
     }
 }
