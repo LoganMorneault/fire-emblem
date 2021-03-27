@@ -14,4 +14,6 @@ public interface IHero {
     void attack(IHero other);
 
     void takeDamage(int damage);
+
+    boolean canAttackTwice(IHero other);
 }

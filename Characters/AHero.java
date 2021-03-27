@@ -124,10 +124,20 @@ public abstract class AHero implements IHero {
         this.y = y;
     }
 
+    /**
+     * Determines if this Hero can attack the other Hero twice
+     * @param other the Hero being attacked
+     * @return true if this Hero's - the other Hero's speed >= 5
+     * */
+    public boolean canAttackTwice(IHero other) {
+        Objects.requireNonNull(other);
+
+        return this.getStat("SPEED") - other.getStat("SPEED") >= 5;
+    }
+
 
     /**
      * Deals damage to the other Hero based on this Hero's strength, speed and weapon
-     * If this Hero's speed is at least 5 greater than other's, this Hero deals double damage.
      * @param other the Hero to be damaged.
      */
     public void attack(IHero other) {
@@ -147,10 +157,7 @@ public abstract class AHero implements IHero {
             (this.weapon.getDamageType() == DamageType.Physical) ? 
             other.getStat("DEFENSE") : 
             other.getStat("RESISTANCE"));
-
-        if (this.speed - other.getStat("SPEED") >= 5) {
-            actualDMG *= 2;
-        }
+        
 
         // reduces opponent's health by actualDMG
         other.takeDamage(actualDMG);

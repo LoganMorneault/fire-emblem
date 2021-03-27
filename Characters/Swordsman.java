@@ -8,6 +8,9 @@ public class Swordsman extends AHero {
 
     /**
      * Constructs a basic swordsman
+     * @param name the name of the Rogue
+     * @param x their x position
+     * @param y their y position
      */
     public Swordsman(String name, int x, int y) {
         // name, HP, STR, DEF, RES, SPD, MOV, X, Y, Weapon

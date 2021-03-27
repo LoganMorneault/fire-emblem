@@ -20,6 +20,8 @@ public class TestMain {
         // Tests getters for AHero
         TestAHero.testGetStat();
         TestAHero.testMove();
+        TestAHero.TestTakeDamage();
+        TestAHero.TestCanAttackTwice();
         System.out.println();
     }
     

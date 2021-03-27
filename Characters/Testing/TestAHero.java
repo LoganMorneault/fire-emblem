@@ -3,6 +3,7 @@ package Characters.Testing;
 import Characters.Swordsman;
 import Characters.IHero;
 import Characters.Mage;
+import Characters.Rogue;
 
 public class TestAHero {
 
@@ -23,15 +24,21 @@ public class TestAHero {
         assert(john.getStat("SPEED") == 2);
         assert(john.getStat("MOVE") == 2);
 
-        assert(sam.getStat("X") == 10);
-        assert(sam.getStat("Y") == 9);
-        assert(sam.getStat("CHP") == 4);
-        assert(sam.getStat("MHP") == 4);
-        assert(sam.getStat("STRENGTH") == 5);
-        assert(sam.getStat("DEFENSE") == 3);
-        assert(sam.getStat("RESISTANCE") == 4);
-        assert(sam.getStat("SPEED") == 2);
-        assert(sam.getStat("MOVESPEED") == 2);
+        assert(sam.getStat("x") == 10);
+        assert(sam.getStat("y") == 9);
+        assert(sam.getStat("chp") == 4);
+        assert(sam.getStat("mhp") == 4);
+        assert(sam.getStat("strength") == 5);
+        assert(sam.getStat("defense") == 3);
+        assert(sam.getStat("resistance") == 4);
+        assert(sam.getStat("speed") == 2);
+        assert(sam.getStat("movespeed") == 2);
+
+        try {
+            sam.getStat("BAD STAT");
+        } catch (IllegalArgumentException e) {
+            assert(e.getMessage().equals("Stat BAD STAT does not exist"));
+        }
 
         System.out.println("AHero: TestGetStat successful");
     }
@@ -55,24 +62,57 @@ public class TestAHero {
         try {
             john.move(5, 5);
         } catch (IllegalArgumentException e) {
-            if (e.getMessage().equals("Invalid movement from (2, 5) to (5, 5)")) {
-                System.out.println("AHero: Move throws exception when move is too far");
-            }
+            assert(e.getMessage().equals("Invalid movement from (2, 5) to (5, 5)"));
         }
 
+
         IHero tom = new Swordsman("Tom", 0, 0);
-
-
         try {
             tom.move(-1, 0);
         } catch (IllegalArgumentException e) {
-            if (e.getMessage().equals("Cannot move to a negative coordinate")) {
-                System.out.println("AHero: Move throws exception when input is negative");
-            }
+            assert(e.getMessage().equals("Cannot move to a negative coordinate"));
         }
 
         System.out.println("AHero: TestMove successful");
 
     }
-    
+
+
+    /**
+     * Tests the takeDamage method.
+     */
+    public static void TestTakeDamage() {
+        IHero john = new Swordsman("John", 1, 5);
+        IHero tom = new Swordsman("Tom", 0, 0);
+
+        assert(john.getStat("MHP") == john.getStat("CHP") 
+            && john.getStat("CHP") == 5);
+
+        john.takeDamage(2);
+
+        assert(john.getStat("MHP") != john.getStat("CHP")
+            && john.getStat("CHP") == 3);
+
+        try {
+            tom.takeDamage(-50);
+        } catch (IllegalArgumentException e) {
+            assert(tom.getStat("CHP") == 5);
+            assert(e.getMessage().equals("Cannot take negative damage!"));
+        }      
+        
+        System.out.println("AHero: TestTakeDamage successful");
+    }
+
+    /**
+     * Tests canAttackTwice method.
+     */
+    public static void TestCanAttackTwice() {
+        IHero john = new Swordsman("John", 1, 5);
+        IHero reginald = new Rogue("Reginald", 0, 0);
+
+        assert(!john.canAttackTwice(reginald));
+        assert(reginald.canAttackTwice(john));
+
+        System.out.println("AHero: TestCanAttackTwice successful");
+    }
 }

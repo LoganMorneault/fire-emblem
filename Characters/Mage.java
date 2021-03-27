@@ -8,6 +8,9 @@ import Characters.Weapons.BasicSpell;
 public class Mage extends AHero {
     /**
      * Constructs a basic mage
+     * @param name the name of the Rogue
+     * @param x their x position
+     * @param y their y position
      */
      public Mage(String name, int x, int y) {
          // name, HP, STR, DEF, RES, SPD, MOV, X, Y, Weapon
