@@ -20,7 +20,7 @@ import Characters.Weapons.IWeapon;
  * Represents a Hero in this game.
  * 
  */
-public class AHero implements IHero {
+public abstract class AHero implements IHero {
     final String name;
 
     private int currentHP;
@@ -38,7 +38,9 @@ public class AHero implements IHero {
 
     private IWeapon weapon;
 
-    public AHero(String name, int maxHP, int strength, int defense, int resistance, int speed, int moveSpeed, int x, int y) {
+    public AHero(String name, int maxHP, int strength, int defense, int resistance, int speed, 
+        int moveSpeed, int x, int y, 
+        IWeapon weapon) {
         this.name = name;
         this.maxHP = Math.max(0, maxHP);
         this.currentHP = this.maxHP;
@@ -51,23 +53,8 @@ public class AHero implements IHero {
 
         this.x = Math.max(0, x);
         this.y = Math.max(0, y);
-    }
 
-
-    /**
-     * Gets this Hero's x-coordinate.
-     * @return this Hero's x-coordinate.
-     */
-    public int getX() {
-        return this.x;
-    }
-
-    /**
-     * Gets this Hero's y-coordinate.
-     * @return this Hero's y-coordinate.
-     */
-    public int getY() {
-        return this.y;
+        this.weapon = Objects.requireNonNull(weapon);
     }
 
     /**
@@ -103,6 +90,9 @@ public class AHero implements IHero {
                 return this.resistance;
             case "SPEED":
                 return this.speed;
+            case "MOVE":
+            case "MOVESPEED":
+                return this.moveSpeed;
             default:
                 throw new IllegalArgumentException(String.format("Stat %s does not exist", stat));
         }
