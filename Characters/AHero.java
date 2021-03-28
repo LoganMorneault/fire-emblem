@@ -68,7 +68,7 @@ public abstract class AHero implements IHero {
 
     /**
      * Gets one of this Hero's stats based on the input
-     * @param stat the stat to be returned. Is one of: "CHP", "MHP", "STRENGTH", "DEFENSE", "RESISTANCE", "SPEED"
+     * @param stat the stat to be returned. Is one of: "X", "Y", "CHP", "MHP", "STRENGTH", "DEFENSE", "RESISTANCE", "SPEED", "MOVESPEED"
      * @return the requested stat.
      * @throws IllegalArgumentException if requested stat does not exist.
      */

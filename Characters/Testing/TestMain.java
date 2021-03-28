@@ -18,6 +18,7 @@ public class TestMain {
         System.out.println();
 
         // Tests getters for AHero
+        TestAHero.testGetName();
         TestAHero.testGetStat();
         TestAHero.testMove();
         TestAHero.TestTakeDamage();

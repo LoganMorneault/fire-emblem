@@ -8,6 +8,14 @@ import Characters.Rogue;
 public class TestAHero {
 
     /**
+     * Tests the getName method
+     */
+    public static void testGetName() {
+        assert(new Swordsman("John", 1, 1).getName().equals("John"));
+        System.out.println("AHero: TestGetName successful");
+    }
+
+    /**
      * Tests the getStat method
      */
     public static void testGetStat() {
