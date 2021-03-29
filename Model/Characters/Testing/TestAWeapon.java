@@ -1,8 +1,9 @@
-package Characters.Testing;
+package Model.Characters.Testing;
 
-import Characters.Weapons.BasicSword;
-import Characters.DamageType;
-import Characters.Weapons.BasicSpell;
+import Model.Characters.Weapons.BasicSword;
+import Model.Characters.DamageType;
+import Model.Characters.Weapons.BasicSpell;
+
 
 /**
  * Class for testing methods in the AWeapon class.

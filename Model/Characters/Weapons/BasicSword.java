@@ -1,6 +1,6 @@
-package Characters.Weapons;
+package Model.Characters.Weapons;
 
-import Characters.DamageType;
+import Model.Characters.DamageType;
 
 /**
  * Class representing a basic sword

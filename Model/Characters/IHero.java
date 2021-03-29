@@ -1,4 +1,4 @@
-package Characters;
+package Model.Characters;
 
 
 /**
@@ -12,11 +12,19 @@ public interface IHero {
 
     /**
      * Returns one of this Hero's stats.
-     * @param stat the stat to be returned. Is one of: "X", "Y", "CHP", "MHP", "STRENGTH", "DEFENSE", "RESISTANCE", "SPEED", "MOVESPEED"
+     * @param stat the stat to be returned. Is one of: "X", "Y", "CHP", "MHP", "MAGIC", "STRENGTH", "DEFENSE", "RESISTANCE", "SPEED", "MOVESPEED"
      * @return the requested stat
      * @throws IllegalArgumentException if stat is not valid
      */
     int getStat(String stat);
+
+    /**
+     * Changes one of this Hero's stats.
+     * @param stat the stat to be updated. Is one of: "X", "Y", "CHP", "MHP", "STRENGTH", "MAGIC", "DEFENSE", "RESISTANCE", "SPEED", "MOVESPEED"
+     * @param val the new value of the stat.
+     * @throws IllegalArgumentException if stat is not valid
+     */
+    void setStat(String stat, int val);
 
     /**
      * Moves this Hero to the requested position.
@@ -45,4 +53,15 @@ public interface IHero {
      * @returns true if this Hero's speed is at least 5 more than the other Hero's speed.
      */
     boolean canAttackTwice(IHero other);
+
+    /**
+     * Returns this Hero's offensive power.
+     */
+    int getOffensePower();
+
+    /**
+     * Returns this Hero's defensive power for the given DamageType.
+     * @param dt either Physical or Magical.
+     */
+    int getDefensePower(DamageType dt);
 }

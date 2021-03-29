@@ -1,8 +1,8 @@
-package Characters.Weapons;
+package Model.Characters.Weapons;
 
 import java.util.Objects;
 
-import Characters.DamageType;
+import Model.Characters.DamageType;
 
 public class AWeapon implements IWeapon {
     protected final int power;

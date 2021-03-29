@@ -1,6 +1,6 @@
-package Characters.Weapons;
+package Model.Characters.Weapons;
 
-import Characters.DamageType;
+import Model.Characters.DamageType;
 
 /*
     An IWeapon has power and a damage type. Its damage is based on its power plus the strength stat of the user.

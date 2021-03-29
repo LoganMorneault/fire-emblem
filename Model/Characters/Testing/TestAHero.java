@@ -1,9 +1,10 @@
-package Characters.Testing;
+package Model.Characters.Testing;
 
-import Characters.Swordsman;
-import Characters.IHero;
-import Characters.Mage;
-import Characters.Rogue;
+import Model.Characters.Swordsman;
+import Model.Characters.DamageType;
+import Model.Characters.IHero;
+import Model.Characters.Mage;
+import Model.Characters.Rogue;
 
 public class TestAHero {
 
@@ -49,6 +50,26 @@ public class TestAHero {
         }
 
         System.out.println("AHero: TestGetStat successful");
+    }
+
+    /**
+     * Tests the setStat method
+     */
+    public static void testSetStat() {
+        IHero john = new Swordsman("John", 1, 2);
+
+        john.setStat("X", 2);
+        assert(john.getStat("X") == 2);
+
+        john.setStat("Y", 3);
+        assert(john.getStat("Y") == 3);
+
+        // only testing one, every stat beyond X and Y is handled by a single method that is tested elsewhere.
+        john.setStat("STRENGTH", 15);
+        assert(john.getStat("STRENGTH") == 15);
+
+        System.out.println("AHero: TestSetStat successful");
+
     }
 
 
@@ -122,5 +143,40 @@ public class TestAHero {
         assert(reginald.canAttackTwice(john));
 
         System.out.println("AHero: TestCanAttackTwice successful");
+    }
+
+
+    /**
+     * Tests getOffensePower method
+     */
+    public static void TestGetOffensePower() {
+        IHero john = new Swordsman("John", 1, 5);
+        IHero sam = new Mage("Sam", 10, 9);
+        IHero reginald = new Rogue("Reginald", 0, 0);
+
+        assert(john.getOffensePower() == 6); // 4str + 2wpn
+        assert(sam.getOffensePower() == 8); // 5mag + 3wpn
+        assert(reginald.getOffensePower() == 4); // 3str + 1 wpn
+
+        System.out.println("AHero: TestGetOffensePower successful");
+    }
+
+    /**
+     * Tests getDefensePower method
+     */
+    public static void TestGetDefensePower() {
+        IHero john = new Swordsman("John", 1, 5);
+        IHero sam = new Mage("Sam", 10, 9);
+        IHero reginald = new Rogue("Reginald", 0, 0);
+
+        assert(john.getDefensePower(DamageType.Physical) == 4); 
+        assert(sam.getDefensePower(DamageType.Physical) == 3); 
+        assert(reginald.getDefensePower(DamageType.Physical) == 2); 
+
+        assert(john.getDefensePower(DamageType.Magical) == 3); 
+        assert(sam.getDefensePower(DamageType.Magical) == 4); 
+        assert(reginald.getDefensePower(DamageType.Magical) == 2); 
+
+        System.out.println("AHero: TestGetDefensePower successful");
     }
 }
